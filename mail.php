@@ -1,26 +1,19 @@
 <?php
+session_start();
 $name = $_POST['name'];
 $email = $_POST['email'];
 $website = $_POST['website'];
 $message = $_POST['message'];
-$formcontent=" From: $name \n\n Website: $website \n\n Subject: $subject \n\n Message: $message";
-$recipient = "damzaky@gmail.com";
-$mailheader = "From: $email \r\n";
-mail($recipient, $subject, $formcontent, $mailheader) or die("Error!");
  
+$to = 'damzaky@gmail.com';
+$subject = "New message from $name";
+ 
+if(empty($name) OR empty($email) OR empty($message)) {
+ echo "Fill in all fields.";
+} elseif($user_answer != $real_answer) {
+	echo "Math question was incorrect, please try again";
+} else {
+	mail($to, $subject, $message, "From: $email");
+	echo "Message sent";
+}
 ?>
-
-<html>
-
-<body>
-
-<div style="font-size: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: 100px;
-    width: 450px;">Thanks for contacting us we will launch you shortly....</div>
-
-<html>
-
-<body>
